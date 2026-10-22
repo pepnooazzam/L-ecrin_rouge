@@ -1,0 +1,741 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>L'Écrin Rouge | Haute Gastronomie & Artisanal Bakes</title>
+  <meta name="description"
+    content="High-end luxury restaurant and artisanal gastronomy experience with interactive tasting menus, digital culinary ordering, bespoke reservation system, and nutrition-forward bakes." />
+
+  <!-- Google Fonts (Only External Request Permitted) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <!-- Standalone Master Stylesheet -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body class="bg-[#0E0E12] text-stone-100 antialiased selection:bg-[#B81D24] selection:text-white">
+
+  <!-- Top Navigation Bar -->
+  <header class="sticky top-0 z-40 bg-[#0E0E12]/90 backdrop-blur-md border-b border-[#2A2A33]">
+    <div class="container-responsive max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+
+      <!-- Brand Signature -->
+      <a href="#" class="flex items-center gap-3 group">
+        <div
+          class="w-10 h-10 rounded-full border border-[#B81D24] flex items-center justify-center bg-[#17171D] group-hover:scale-105 transition-transform">
+          <span class="font-serif text-xl font-bold text-[#B81D24]">É</span>
+        </div>
+        <div>
+          <span class="font-serif text-2xl font-bold tracking-wider text-white block leading-none">L'ÉCRIN ROUGE</span>
+          <span class="text-[10px] tracking-[0.25em] text-[#C5A059] uppercase block mt-1">Haute Cuisine • Paris & New
+            York</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation Links -->
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
+        <a href="#artisan-showcase" class="text-stone-300 hover:text-white transition-colors">Artisan Signatures</a>
+        <a href="#menu" class="text-stone-300 hover:text-white transition-colors">Tasting Menu</a>
+        <a href="#experience" class="text-stone-300 hover:text-white transition-colors">Ambiance & Chef</a>
+        <a href="#reservation" class="text-stone-300 hover:text-white transition-colors">Reservations</a>
+      </nav>
+
+      <!-- Right Action CTAs -->
+      <div class="flex items-center gap-4">
+        <!-- Tasting Order Cart Button -->
+        <button
+          class="open-cart-btn relative p-2.5 rounded-xl bg-[#17171D] border border-[#2A2A33] hover:border-[#B81D24] text-stone-200 transition-colors cursor-pointer"
+          aria-label="Open Tasting Cart">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"
+              d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
+          </svg>
+          <span
+            class="cart-count-badge hidden absolute -top-1.5 -right-1.5 w-5 h-5 rounded-full bg-[#B81D24] text-[11px] font-bold text-white flex items-center justify-center">0</span>
+        </button>
+
+        <!-- Book Table CTA -->
+        <a href="#reservation"
+          class="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#B81D24] hover:bg-[#D1252D] text-white text-xs font-semibold uppercase tracking-widest transition-all shadow-lg shadow-[#B81D24]/25">
+          <span>Reserve Table</span>
+        </a>
+
+        <!-- Mobile Hamburger Toggle -->
+        <button id="mobile-menu-toggle" class="md:hidden p-2 rounded-lg text-stone-300 hover:text-white"
+          aria-label="Toggle Navigation">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation Drawer -->
+  <div id="mobile-nav-overlay" class="hidden fixed inset-0 bg-black/70 backdrop-blur-sm z-50 transition-opacity"></div>
+  <div id="mobile-nav-drawer"
+    class="fixed top-0 left-0 bottom-0 w-80 max-w-[85vw] bg-[#14141A] border-r border-[#2A2A33] z-50 -translate-x-full transition-transform duration-300 p-6 flex flex-col justify-between">
+    <div>
+      <div class="flex items-center justify-between pb-6 border-b border-[#2A2A33]">
+        <div class="flex items-center gap-3">
+          <div class="w-8 h-8 rounded-full border border-[#B81D24] flex items-center justify-center bg-[#17171D]">
+            <span class="font-serif font-bold text-[#B81D24]">É</span>
+          </div>
+          <span class="font-serif text-lg font-bold text-white">L'ÉCRIN ROUGE</span>
+        </div>
+        <button id="close-mobile-nav" class="text-stone-400 hover:text-white p-1">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+      </div>
+
+      <nav class="flex flex-col gap-4 mt-8">
+        <a href="#artisan-showcase"
+          class="mobile-nav-link text-base font-medium text-stone-200 hover:text-[#B81D24] py-2 border-b border-[#2A2A33]/50">Artisan
+          Signatures</a>
+        <a href="#menu"
+          class="mobile-nav-link text-base font-medium text-stone-200 hover:text-[#B81D24] py-2 border-b border-[#2A2A33]/50">Tasting
+          Menu</a>
+        <a href="#experience"
+          class="mobile-nav-link text-base font-medium text-stone-200 hover:text-[#B81D24] py-2 border-b border-[#2A2A33]/50">Ambiance
+          & Chef</a>
+        <a href="#reservation"
+          class="mobile-nav-link text-base font-medium text-stone-200 hover:text-[#B81D24] py-2 border-b border-[#2A2A33]/50">Reservations</a>
+      </nav>
+    </div>
+
+    <div class="pt-6 border-t border-[#2A2A33]">
+      <a href="#reservation"
+        class="mobile-nav-link w-full py-3 rounded-xl bg-[#B81D24] text-white text-xs font-semibold uppercase tracking-widest text-center block mb-3">
+        Reserve a Table
+      </a>
+      <p class="text-xs text-stone-500 text-center">Service: 17:30 – 23:30 Daily</p>
+    </div>
+  </div>
+
+  <!-- Main Content Container -->
+  <main>
+
+    <!-- HERO SECTION: Signature Artisanal Creations Showcase -->
+    <section id="artisan-showcase"
+      class="relative py-12 md:py-20 overflow-hidden bg-gradient-to-b from-[#14141A] to-[#0E0E12] border-b border-[#2A2A33]">
+      <div class="container-responsive max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <div class="text-center max-w-3xl mx-auto mb-12">
+          <span
+            class="inline-block px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest bg-[#B81D24]/20 text-[#B81D24] border border-[#B81D24]/30 mb-4">
+            Haute Gastronomie & Artisanal Bakes
+          </span>
+          <h1 class="font-serif text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-white mb-4">
+            Culinary Artistry in <span class="text-[#B81D24] italic">Crimson & Gold</span>
+          </h1>
+          <p class="text-sm sm:text-base text-stone-400 leading-relaxed">
+            Explore our master baker's signature slow-fermented bakes, decadent white truffle infusions, and
+            Michelin-caliber plates crafted from organic seasonal harvest.
+          </p>
+        </div>
+
+        <!-- Interactive Plate Showcase Box -->
+        <div
+          class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-[#17171D] border border-[#2A2A33] rounded-3xl p-6 sm:p-8 lg:p-10 shadow-2xl relative">
+
+          <!-- Left: Featured Dish Image (Local WebP) -->
+          <div class="lg:col-span-7 relative">
+            <div class="aspect-[4/3] rounded-2xl overflow-hidden bg-[#0E0E12] border border-[#2A2A33] relative">
+              <img id="hero-dish-img" src="img/bagel-truffle.webp" alt="Artisan Truffle Bagel"
+                class="w-full h-full object-cover transition-all duration-500" />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+              <div class="absolute bottom-4 left-4 right-4 flex items-center justify-between text-xs text-stone-300">
+                <span
+                  class="px-3 py-1 rounded-full bg-black/70 backdrop-blur-md border border-white/10 font-mono text-[#C5A059]">
+                  100% Organic & Local Bake
+                </span>
+                <span class="px-3 py-1 rounded-full bg-[#B81D24]/80 backdrop-blur-md text-white font-semibold">
+                  Fresh Every 4 Hours
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Dish Details & Nutrition Facts -->
+          <div class="lg:col-span-5 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between gap-4 mb-2">
+                <span class="text-xs uppercase tracking-widest text-[#C5A059] font-bold">Featured Artisanal Bake</span>
+                <span id="hero-dish-price" class="font-serif text-3xl font-bold text-white">$18</span>
+              </div>
+
+              <h2 id="hero-dish-title" class="font-serif text-2xl sm:text-3xl font-bold text-white mb-1">
+                Artisan Seeded Bagel & Whipped Truffle Fromage
+              </h2>
+              <p id="hero-dish-french" class="font-serif text-sm italic text-[#B81D24] mb-4">
+                Le Bagel Artisanal aux Graines & Truffe Blanche
+              </p>
+              <p id="hero-dish-desc" class="text-xs sm:text-sm text-stone-300 leading-relaxed mb-6">
+                Hand-shaped high-protein bagel encrusted with organic poppy and toasted black sesame, layered with
+                whipped Périgord white truffle cream cheese, ripe Haas avocado, and garden micro-herbs.
+              </p>
+
+              <!-- Nutrition Breakdown Pills -->
+              <div class="p-4 rounded-xl bg-[#0E0E12] border border-[#2A2A33] mb-6">
+                <span class="text-[10px] uppercase font-bold tracking-wider text-stone-400 block mb-2">Nutritional
+                  Balance</span>
+                <div class="grid grid-cols-3 gap-2 text-center">
+                  <div class="p-2 rounded-lg bg-[#17171D]">
+                    <span id="hero-dish-protein" class="block font-bold text-base text-emerald-400">26g</span>
+                    <span class="text-[10px] text-stone-400 uppercase">Protein</span>
+                  </div>
+                  <div class="p-2 rounded-lg bg-[#17171D]">
+                    <span id="hero-dish-carbs" class="block font-bold text-base text-amber-400">32g</span>
+                    <span class="text-[10px] text-stone-400 uppercase">Carbs</span>
+                  </div>
+                  <div class="p-2 rounded-lg bg-[#17171D]">
+                    <span id="hero-dish-cals" class="block font-bold text-base text-stone-200">340 kcal</span>
+                    <span class="text-[10px] text-stone-400 uppercase">Energy</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Interactive Switcher Buttons for 3 Products -->
+            <div>
+              <p class="text-xs text-stone-400 mb-2 font-medium">Select Artisan Masterpiece:</p>
+              <div class="grid grid-cols-3 gap-2 mb-5">
+                <button
+                  class="hero-plate-selector p-2 rounded-xl border border-[#B81D24] bg-[#1C1719] text-left transition-all cursor-pointer">
+                  <img src="img/bagel-truffle.webp" alt="Truffle Bagel"
+                    class="w-full h-12 object-cover rounded-lg mb-1" />
+                  <span class="block text-[11px] font-semibold text-white truncate">Truffle Bagel</span>
+                  <span class="block text-[10px] text-[#C5A059] font-serif">$18</span>
+                </button>
+                <button
+                  class="hero-plate-selector p-2 rounded-xl border border-[#2A2A33] bg-[#14141A] text-left transition-all cursor-pointer">
+                  <img src="img/brioche-egg.webp" alt="Brioche Egg" class="w-full h-12 object-cover rounded-lg mb-1" />
+                  <span class="block text-[11px] font-semibold text-white truncate">Brioche Caviar</span>
+                  <span class="block text-[10px] text-[#C5A059] font-serif">$24</span>
+                </button>
+                <button
+                  class="hero-plate-selector p-2 rounded-xl border border-[#2A2A33] bg-[#14141A] text-left transition-all cursor-pointer">
+                  <img src="img/sourdough-boule.webp" alt="Sourdough Boule"
+                    class="w-full h-12 object-cover rounded-lg mb-1" />
+                  <span class="block text-[11px] font-semibold text-white truncate">Boule Levain</span>
+                  <span class="block text-[10px] text-[#C5A059] font-serif">$14</span>
+                </button>
+              </div>
+
+              <div class="flex items-center gap-3">
+                <button id="hero-add-cart-btn"
+                  class="flex-1 py-3 rounded-xl bg-[#B81D24] hover:bg-[#D1252D] text-white text-xs font-semibold uppercase tracking-wider transition-all shadow-lg shadow-[#B81D24]/20 cursor-pointer">
+                  + Add To Tasting Order
+                </button>
+                <a href="#reservation"
+                  class="px-5 py-3 rounded-xl bg-[#2A2A33] hover:bg-[#3A3A44] text-white text-xs font-semibold uppercase tracking-wider transition-colors text-center">
+                  Book Table
+                </a>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- VIP PRIVILEGE VOUCHER SECTION -->
+    <section class="py-8 bg-[#0E0E12] border-b border-[#2A2A33]">
+      <div class="container-responsive max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div
+          class="coupon-ticket p-6 sm:p-8 bg-gradient-to-r from-[#17171D] via-[#1F1719] to-[#17171D] flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl">
+          <div class="flex items-center gap-4">
+            <div
+              class="w-12 h-12 rounded-xl bg-[#B81D24]/20 border border-[#B81D24] flex items-center justify-center shrink-0">
+              <span class="font-serif text-2xl text-[#C5A059] font-bold">★</span>
+            </div>
+            <div>
+              <span class="text-xs uppercase tracking-widest text-[#C5A059] font-bold block">Privilège
+                Dégustation</span>
+              <h3 class="font-serif text-xl sm:text-2xl font-bold text-white">20% Off Your Curated Tasting Menu</h3>
+              <p class="text-xs text-stone-400 mt-0.5">Use VIP promo code <span
+                  class="text-white font-mono font-bold bg-[#B81D24]/30 px-2 py-0.5 rounded border border-[#B81D24]/50">HAUTE20</span>
+                at tasting checkout for champagne pairing privileges.</p>
+            </div>
+          </div>
+          <button
+            class="open-cart-btn px-6 py-2.5 rounded-xl bg-[#C5A059] hover:bg-[#D4B36F] text-black font-semibold text-xs uppercase tracking-widest transition-colors shrink-0 cursor-pointer">
+            Claim VIP Privileges
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- DIGITAL TASTING MENU -->
+    <section id="menu" class="py-16 md:py-24 bg-[#0E0E12]">
+      <div class="container-responsive max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-widest text-[#B81D24] block mb-2">Carte du
+              Restaurant</span>
+            <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-white">The Digital Tasting Menu</h2>
+            <p class="text-xs sm:text-sm text-stone-400 mt-2 max-w-xl">
+              Every dish is prepared upon order using organic flour, hand-harvested sea salts, and farm-direct noble
+              ingredients.
+            </p>
+          </div>
+          <div id="menu-items-count"
+            class="text-xs font-mono text-[#C5A059] border border-[#C5A059]/30 px-3 py-1.5 rounded-full bg-[#17171D] self-start md:self-end">
+            Loading courses...
+          </div>
+        </div>
+
+        <!-- Category Filter Tabs -->
+        <div class="flex items-center gap-2 overflow-x-auto pb-4 mb-6 scrollbar-none">
+          <button
+            class="menu-category-tab px-4 py-2 rounded-xl text-xs font-semibold uppercase tracking-wider bg-[#B81D24] text-white shrink-0 transition-all cursor-pointer"
+            data-category="all">
+            All Courses
+          </button>
+          <button
+            class="menu-category-tab px-4 py-2 rounded-xl text-xs font-semibold uppercase tracking-wider bg-[#1C1719] text-stone-300 hover:text-white shrink-0 transition-all cursor-pointer"
+            data-category="artisan-bakes">
+            Artisanal Bakes
+          </button>
+          <button
+            class="menu-category-tab px-4 py-2 rounded-xl text-xs font-semibold uppercase tracking-wider bg-[#1C1719] text-stone-300 hover:text-white shrink-0 transition-all cursor-pointer"
+            data-category="starters">
+            Caviar & Starters
+          </button>
+          <button
+            class="menu-category-tab px-4 py-2 rounded-xl text-xs font-semibold uppercase tracking-wider bg-[#1C1719] text-stone-300 hover:text-white shrink-0 transition-all cursor-pointer"
+            data-category="entrees">
+            Haute Entrées
+          </button>
+          <button
+            class="menu-category-tab px-4 py-2 rounded-xl text-xs font-semibold uppercase tracking-wider bg-[#1C1719] text-stone-300 hover:text-white shrink-0 transition-all cursor-pointer"
+            data-category="desserts">
+            Grand Pâtisserie
+          </button>
+          <button
+            class="menu-category-tab px-4 py-2 rounded-xl text-xs font-semibold uppercase tracking-wider bg-[#1C1719] text-stone-300 hover:text-white shrink-0 transition-all cursor-pointer"
+            data-category="mixology">
+            Cellar & Mixology
+          </button>
+        </div>
+
+        <!-- Search & Dietary Bar -->
+        <div
+          class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 p-4 rounded-2xl bg-[#14141A] border border-[#2A2A33] mb-10">
+          <!-- Search Input -->
+          <div class="relative flex-1">
+            <svg class="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-stone-400" fill="none"
+              stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+            </svg>
+            <input id="menu-search-input" type="text" placeholder="Search dishes, truffle, wagyu, caviar..."
+              class="w-full pl-10 pr-4 py-2 text-xs bg-[#0E0E12] border border-[#2A2A33] rounded-xl text-stone-200 placeholder-stone-500 focus:outline-none focus:border-[#B81D24]" />
+          </div>
+
+          <!-- Dietary Filter Pills -->
+          <div class="flex items-center gap-1.5 flex-wrap">
+            <button
+              class="dietary-filter-btn px-3 py-1.5 rounded-lg border border-[#C5A059] text-[#C5A059] bg-[#C5A059]/10 text-[11px] font-semibold transition-all cursor-pointer"
+              data-diet="all">
+              All Diets
+            </button>
+            <button
+              class="dietary-filter-btn px-3 py-1.5 rounded-lg border border-[#2A2A33] text-stone-400 text-[11px] font-semibold transition-all cursor-pointer"
+              data-diet="high-protein">
+              High Protein
+            </button>
+            <button
+              class="dietary-filter-btn px-3 py-1.5 rounded-lg border border-[#2A2A33] text-stone-400 text-[11px] font-semibold transition-all cursor-pointer"
+              data-diet="chef-signature">
+              Chef Signature
+            </button>
+            <button
+              class="dietary-filter-btn px-3 py-1.5 rounded-lg border border-[#2A2A33] text-stone-400 text-[11px] font-semibold transition-all cursor-pointer"
+              data-diet="keto">
+              Keto
+            </button>
+            <button
+              class="dietary-filter-btn px-3 py-1.5 rounded-lg border border-[#2A2A33] text-stone-400 text-[11px] font-semibold transition-all cursor-pointer"
+              data-diet="organic">
+              Organic
+            </button>
+          </div>
+        </div>
+
+        <!-- Dishes Grid Container -->
+        <div id="menu-items-grid" class="responsive-grid-cards grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Populated via JavaScript -->
+        </div>
+
+      </div>
+    </section>
+
+    <!-- AMBIANCE & PHILOSOPHY SECTION -->
+    <section id="experience" class="py-16 md:py-24 bg-[#14141A] border-t border-[#2A2A33]">
+      <div class="container-responsive max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+
+          <div class="lg:col-span-6 relative">
+            <div class="aspect-[4/3] rounded-3xl overflow-hidden border border-[#2A2A33] relative">
+              <img src="img/crimson-salon.webp" alt="The Crimson Salon" class="w-full h-full object-cover" />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+              <div class="absolute bottom-6 left-6 right-6">
+                <span class="text-xs uppercase tracking-widest text-[#C5A059] font-bold block mb-1">Atmosphère &
+                  Décor</span>
+                <p class="font-serif text-2xl text-white font-bold">The Crimson Salon at Twilight</p>
+                <p class="text-xs text-stone-300 mt-1">Velvet banquettes, candlelight, and acoustic privacy for intimate
+                  dining.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="lg:col-span-6">
+            <span class="text-xs font-bold uppercase tracking-widest text-[#B81D24] block mb-3">Our Culinary
+              Philosophy</span>
+            <h2 class="font-serif text-3xl sm:text-4xl font-bold text-white mb-6">
+              Where French Heritage Meets Modern Purity
+            </h2>
+            <p class="text-stone-300 text-sm leading-relaxed mb-4">
+              At L'Écrin Rouge, every morning begins before dawn with our heritage sourdough starters cultivated in
+              French oak barrels. We do not use commercial yeast, artificial additives, or expedited fermentation.
+            </p>
+            <p class="text-stone-300 text-sm leading-relaxed mb-6">
+              Our kitchen balances classical haute cuisine indulgence with modern nutritional awareness: high-protein
+              ancient grains, unpasteurized Normandy dairy, and sustainably caught cold-water seafood.
+            </p>
+
+            <!-- Chef Quote Banner -->
+            <div class="p-5 rounded-2xl bg-[#1C1719] border-l-4 border-[#B81D24] flex items-center gap-4">
+              <img src="img/chef-portrait.webp" alt="Executive Chef Laurent Mercier"
+                class="w-16 h-16 rounded-full object-cover border-2 border-[#C5A059] shrink-0" />
+              <div>
+                <p class="font-serif italic text-white text-sm">"True luxury is found in time: 36 hours of fermentation,
+                  generations of soil stewardship, and unhurried culinary precision."</p>
+                <span class="text-xs text-[#C5A059] font-semibold block mt-1">Laurent Mercier • Executive Chef & Maître
+                  Boulanger</span>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- BESPOKE TABLE RESERVATION -->
+    <section id="reservation" class="py-16 md:py-24 bg-[#0E0E12] border-t border-[#2A2A33]">
+      <div class="container-responsive max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <div class="text-center mb-12">
+          <span class="text-xs font-bold uppercase tracking-widest text-[#B81D24] block mb-2">Bespoke Table
+            Booking</span>
+          <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-3">Reserve Your Gastronomic
+            Table</h2>
+          <p class="text-xs sm:text-sm text-stone-400 max-w-xl mx-auto">
+            Tables are reserved exclusively for dinner service. For private dining or cellar tasting flights, please
+            specify in your notes.
+          </p>
+        </div>
+
+        <!-- Reservation Card -->
+        <div class="bg-[#14141A] border border-[#2A2A33] rounded-3xl p-6 sm:p-10 shadow-2xl relative">
+
+          <form id="table-reservation-form" class="space-y-6">
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs uppercase tracking-wider font-semibold text-stone-300 mb-2"
+                  for="res-guest-name">Guest Full Name</label>
+                <input required type="text" id="res-guest-name" placeholder="Lady Eleanor Vance"
+                  class="w-full px-4 py-3 rounded-xl bg-[#0E0E12] border border-[#2A2A33] text-stone-100 text-xs focus:outline-none focus:border-[#B81D24]" />
+              </div>
+              <div>
+                <label class="block text-xs uppercase tracking-wider font-semibold text-stone-300 mb-2"
+                  for="res-email">Email Address</label>
+                <input required type="email" id="res-email" placeholder="eleanor@hautecuisine.com"
+                  class="w-full px-4 py-3 rounded-xl bg-[#0E0E12] border border-[#2A2A33] text-stone-100 text-xs focus:outline-none focus:border-[#B81D24]" />
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <div>
+                <label class="block text-xs uppercase tracking-wider font-semibold text-stone-300 mb-2"
+                  for="res-date">Date</label>
+                <input required type="date" id="res-date" value="2026-11-20"
+                  class="w-full px-4 py-3 rounded-xl bg-[#0E0E12] border border-[#2A2A33] text-stone-100 text-xs focus:outline-none focus:border-[#B81D24]" />
+              </div>
+              <div>
+                <label class="block text-xs uppercase tracking-wider font-semibold text-stone-300 mb-2"
+                  for="res-time">Seating Time</label>
+                <select id="res-time"
+                  class="w-full px-4 py-3 rounded-xl bg-[#0E0E12] border border-[#2A2A33] text-stone-100 text-xs focus:outline-none focus:border-[#B81D24]">
+                  <option value="17:30">17:30 - Early Twilight</option>
+                  <option value="18:45">18:45 - First Grand Service</option>
+                  <option value="20:00" selected>20:00 - Prime Evening Service</option>
+                  <option value="21:15">21:15 - Chef's Tasting Flight</option>
+                  <option value="22:30">22:30 - Late Night Velvet</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-xs uppercase tracking-wider font-semibold text-stone-300 mb-2"
+                  for="res-guests">Party Size</label>
+                <select id="res-guests"
+                  class="w-full px-4 py-3 rounded-xl bg-[#0E0E12] border border-[#2A2A33] text-stone-100 text-xs focus:outline-none focus:border-[#B81D24]">
+                  <option value="1">1 Solo Connoisseur</option>
+                  <option value="2" selected>2 Guests (Intimate Table)</option>
+                  <option value="4">4 Guests (Salon Booth)</option>
+                  <option value="6">6 Guests (Grand Round Table)</option>
+                  <option value="8">8 Guests (Chef's Private Counter)</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs uppercase tracking-wider font-semibold text-stone-300 mb-2"
+                  for="res-salon">Preferred Dining Room</label>
+                <select id="res-salon"
+                  class="w-full px-4 py-3 rounded-xl bg-[#0E0E12] border border-[#2A2A33] text-stone-100 text-xs focus:outline-none focus:border-[#B81D24]">
+                  <option value="The Crimson Salon">The Crimson Salon (Velvet & Candlelight)</option>
+                  <option value="Chef's Open Counter">Chef Laurent's Hearth Counter</option>
+                  <option value="The Grand Salle">The Grand Salle (Vaulted Ceiling)</option>
+                  <option value="Sommelier Wine Terrace">The Sommelier Wine Terrace</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-xs uppercase tracking-wider font-semibold text-stone-300 mb-2"
+                  for="res-notes">Dietary & Occasion Notes</label>
+                <input type="text" id="res-notes" placeholder="Anniversary celebration, gluten sensitivity, etc."
+                  class="w-full px-4 py-3 rounded-xl bg-[#0E0E12] border border-[#2A2A33] text-stone-100 text-xs focus:outline-none focus:border-[#B81D24]" />
+              </div>
+            </div>
+
+            <button type="submit"
+              class="w-full py-4 rounded-xl bg-[#B81D24] hover:bg-[#D1252D] text-white text-xs font-semibold uppercase tracking-widest transition-all shadow-xl shadow-[#B81D24]/20 cursor-pointer">
+              Confirm & Secure Table Reservation
+            </button>
+
+          </form>
+
+          <!-- Dynamic Confirmation Output -->
+          <div id="reservation-confirmation" class="hidden"></div>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-[#09090C] border-t border-[#2A2A33] py-12 text-stone-400 text-xs">
+    <div class="container-responsive max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+
+        <div class="space-y-3">
+          <div class="flex items-center gap-2">
+            <div class="w-7 h-7 rounded-full border border-[#B81D24] flex items-center justify-center bg-[#17171D]">
+              <span class="font-serif font-bold text-[#B81D24]">É</span>
+            </div>
+            <span class="font-serif text-lg font-bold text-white tracking-wider">L'ÉCRIN ROUGE</span>
+          </div>
+          <p class="text-stone-400 leading-relaxed text-xs">
+            Haute cuisine, bespoke reservations, and slow-fermented organic bakes in a seductive crimson salon.
+          </p>
+        </div>
+
+        <div>
+          <h4 class="font-serif text-sm font-bold text-white uppercase tracking-wider mb-3">Service Hours</h4>
+          <p class="text-stone-400 leading-relaxed">Tuesday – Sunday<br />Dinner: 17:30 – 23:30<br />Artisan Bakery:
+            07:00 – 14:00</p>
+        </div>
+
+        <div>
+          <h4 class="font-serif text-sm font-bold text-white uppercase tracking-wider mb-3">Sanctuary Location</h4>
+          <p class="text-stone-400 leading-relaxed">188 Boulevard Saint-Germain, Paris<br />742 Madison Avenue, New
+            York<br />concierge@lecrinrouge.com</p>
+        </div>
+
+        <div>
+          <h4 class="font-serif text-sm font-bold text-white uppercase tracking-wider mb-3">Sommelier Cellar</h4>
+          <p class="text-stone-400 leading-relaxed">Over 1,200 curated biodynamic references and vintage champagnes
+            stored in controlled subterranean vaults.</p>
+        </div>
+
+      </div>
+
+      <div
+        class="pt-8 border-t border-[#1C1C26] flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-stone-500">
+        <p>© 2026 L'Écrin Rouge Gastronomie. All rights reserved.</p>
+        <div class="flex items-center gap-6">
+          <span>Pure Local Assets</span>
+          <span>Zero Third-Party Image Trackers</span>
+          <span>Google Fonts Typography</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- SLIDING TASTING CART DRAWER -->
+  <div id="cart-overlay" class="hidden fixed inset-0 bg-black/70 backdrop-blur-sm z-50 transition-opacity duration-300">
+  </div>
+  <div id="cart-drawer"
+    class="fixed top-0 right-0 bottom-0 w-full sm:w-[420px] bg-[#14141A] border-l border-[#2A2A33] z-50 translate-x-full transition-transform duration-300 p-6 flex flex-col justify-between shadow-2xl">
+
+    <div>
+      <div class="flex items-center justify-between pb-4 border-b border-[#2A2A33]">
+        <div>
+          <h3 class="font-serif text-xl font-bold text-white">Your Tasting Order</h3>
+          <p class="text-xs text-[#C5A059] font-serif">Curated Artisan Selections</p>
+        </div>
+        <button id="close-cart-btn" class="p-1 text-stone-400 hover:text-white cursor-pointer"
+          aria-label="Close Tasting Cart">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Empty Cart State -->
+      <div id="cart-empty-state" class="py-16 text-center">
+        <div
+          class="w-16 h-16 rounded-full bg-[#1C1719] border border-[#B81D24]/30 flex items-center justify-center mx-auto mb-4 text-[#B81D24]">
+          <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+              d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
+          </svg>
+        </div>
+        <p class="font-serif text-lg text-white font-semibold mb-1">Your Tasting Order is Empty</p>
+        <p class="text-xs text-stone-400 max-w-xs mx-auto">Explore our artisanal bakes and signature courses to build
+          your personal flight.</p>
+      </div>
+
+      <!-- Filled Cart Items List -->
+      <div id="cart-content-state" class="hidden mt-4 space-y-3 max-h-[45vh] overflow-y-auto pr-1">
+        <div id="cart-items-list" class="space-y-3"></div>
+      </div>
+    </div>
+
+    <!-- Cart Footer / Totals -->
+    <div class="pt-4 border-t border-[#2A2A33]">
+      <!-- Promo Code Form -->
+      <form id="cart-promo-form" class="mb-4">
+        <div class="flex gap-2">
+          <input id="cart-promo-input" type="text" placeholder="Promo code (e.g. HAUTE20)"
+            class="flex-1 px-3 py-2 text-xs bg-[#0E0E12] border border-[#2A2A33] rounded-lg text-stone-200 placeholder-stone-500 uppercase focus:outline-none focus:border-[#B81D24]" />
+          <button type="submit"
+            class="px-4 py-2 bg-[#2A2A33] hover:bg-[#3A3A44] text-white text-xs font-semibold uppercase rounded-lg transition-colors cursor-pointer">
+            Apply
+          </button>
+        </div>
+        <div id="cart-promo-feedback"></div>
+        <div id="cart-promo-gift"
+          class="hidden text-xs text-[#C5A059] mt-1.5 p-2 bg-[#1C1719] border border-[#C5A059]/30 rounded-lg"></div>
+      </form>
+
+      <!-- Nutrition Summary -->
+      <div class="flex items-center justify-between text-xs py-1 text-stone-400">
+        <span>Combined Nutrition:</span>
+        <span><strong id="cart-total-protein" class="text-emerald-400">0g</strong> protein • <strong
+            id="cart-total-cals" class="text-stone-300">0 kcal</strong></span>
+      </div>
+
+      <!-- Subtotal -->
+      <div class="flex items-center justify-between text-xs py-1 text-stone-400">
+        <span>Subtotal</span>
+        <span id="cart-subtotal" class="font-serif text-white font-semibold">$0.00</span>
+      </div>
+
+      <!-- Discount Row -->
+      <div id="cart-discount-row" class="hidden flex items-center justify-between text-xs py-1 text-emerald-400">
+        <span>VIP Privilege (20%)</span>
+        <span id="cart-discount" class="font-serif font-semibold">-$0.00</span>
+      </div>
+
+      <!-- Final Total -->
+      <div class="flex items-center justify-between text-sm py-2 border-t border-[#2A2A33] mt-2 mb-4">
+        <span class="font-serif font-bold text-white">Estimated Flight Total</span>
+        <span id="cart-total" class="font-serif text-xl font-bold text-[#C5A059]">$0.00</span>
+      </div>
+
+      <button id="cart-checkout-btn"
+        class="w-full py-3.5 rounded-xl bg-[#B81D24] hover:bg-[#D1252D] text-white text-xs font-semibold uppercase tracking-widest transition-all shadow-xl shadow-[#B81D24]/20 cursor-pointer">
+        Pair With Table Reservation
+      </button>
+    </div>
+
+  </div>
+
+  <!-- DISH DETAIL MODAL -->
+  <div id="dish-modal-overlay" class="hidden fixed inset-0 bg-black/80 backdrop-blur-md z-50"></div>
+  <div id="dish-detail-modal"
+    class="hidden fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[92vw] max-w-xl bg-[#14141A] border border-[#2A2A33] rounded-3xl z-50 shadow-2xl overflow-hidden max-h-[90vh] flex flex-col">
+    <div class="relative h-64 sm:h-72 bg-[#0E0E12] shrink-0">
+      <img id="modal-dish-img" src="img/bagel-truffle.webp" alt="Dish modal" class="w-full h-full object-cover" />
+      <div class="absolute inset-0 bg-gradient-to-t from-[#14141A] via-transparent to-transparent"></div>
+      <button id="dish-modal-close"
+        class="absolute top-4 right-4 w-9 h-9 rounded-full bg-black/60 text-stone-300 hover:text-white flex items-center justify-center backdrop-blur-md cursor-pointer border border-white/10"
+        aria-label="Close Dish Modal">
+        ✕
+      </button>
+    </div>
+
+    <div class="p-6 overflow-y-auto">
+      <div class="flex items-start justify-between gap-4 mb-2">
+        <div>
+          <h3 id="modal-dish-title" class="font-serif text-2xl font-bold text-white">Dish Name</h3>
+          <p id="modal-dish-french" class="font-serif text-sm italic text-[#B81D24]">French Title</p>
+        </div>
+        <span id="modal-dish-price" class="font-serif text-2xl font-bold text-[#C5A059]">$0</span>
+      </div>
+
+      <p id="modal-dish-desc" class="text-xs sm:text-sm text-stone-300 leading-relaxed mb-4"></p>
+
+      <!-- Nutrition Metrics -->
+      <div class="grid grid-cols-3 gap-2 p-3 bg-[#0E0E12] rounded-xl border border-[#2A2A33] mb-4 text-center">
+        <div>
+          <span id="modal-dish-protein" class="text-sm font-bold text-emerald-400 block">26g</span>
+          <span class="text-[10px] text-stone-400 uppercase">Protein</span>
+        </div>
+        <div>
+          <span id="modal-dish-carbs" class="text-sm font-bold text-amber-400 block">32g</span>
+          <span class="text-[10px] text-stone-400 uppercase">Carbohydrates</span>
+        </div>
+        <div>
+          <span id="modal-dish-cals" class="text-sm font-bold text-stone-200 block">340 kcal</span>
+          <span class="text-[10px] text-stone-400 uppercase">Energy</span>
+        </div>
+      </div>
+
+      <!-- Provenance Ingredients -->
+      <h4 class="text-xs font-semibold uppercase tracking-wider text-[#C5A059] mb-2">Artisanal Ingredients & Provenance
+      </h4>
+      <ul id="modal-dish-ingredients" class="space-y-1.5 mb-6"></ul>
+
+      <button id="modal-add-to-cart"
+        class="w-full py-3.5 rounded-xl bg-[#B81D24] hover:bg-[#D1252D] text-white text-xs font-semibold uppercase tracking-wider transition-all cursor-pointer shadow-lg shadow-[#B81D24]/20">
+        + Add Course to Tasting Order
+      </button>
+    </div>
+  </div>
+
+  <!-- Standalone Client Script -->
+  <script src="javascript/main.js"></script>
+  <script src="javascript.js"></script>
+</body>
+
+</html>
